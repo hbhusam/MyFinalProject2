@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,21 +30,34 @@ public class Home  extends AppCompatActivity implements View.OnClickListener,Ada
         //  btask.setOnClickListener(this);
         newsfeed =(ListView) findViewById(R.id.lvNewsfeed);
 
-        feed.add("Can AI Detect Sexual Orientation from Photos?");
-        feed.add("Feeling Lonely? You May Be Damaging Your Health");
+        feed.add("Can AI Detect Sexual Orientation from Photos?");  // discreption of the item in the listview
+        feed.add("Feeling Lonely? You May Be Damaging Your Health"); // discreption of the item in the listview
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, feed);
-        newsfeed.setAdapter(adapter);
+        newsfeed.setAdapter(adapter);// setting the adapter to the listview
         newsfeed.setOnItemLongClickListener(this);
     }
+public boolean onCreateOptionsMenu (Menu menu) {        // coneccting the option menu from the resource file
+    getMenuInflater().inflate(R.menu.homemenu, menu);
+return true;
+}
+    public boolean onOptionsItemSelected (MenuItem item) { //setting up the option menu to work
+        switch (item.getItemId()){
+            case R.id.about:
+                Intent i = new Intent(this, about.class);// when clicking on the option menu intents to the page
+                startActivity(i);
 
+        }
+        return true;
+
+    }
     @Override
     public void onClick(View v) {
         if (v==btrelationship){
-            Intent i = new Intent(this, Relationship.class);
+            Intent i = new Intent(this, Relationship.class);// clicking on button and intenting to page
             startActivity(i);
         }
         if (v==btask){
-            Intent i = new Intent(this, Ask.class);
+            Intent i = new Intent(this, Ask.class);// clicking on button and intenting to page
             startActivity(i);
         }
     }
@@ -51,12 +66,12 @@ public class Home  extends AppCompatActivity implements View.OnClickListener,Ada
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         if(position == 0 ){
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/your-online-secrets/201709/can-ai-detect-sexual-orientation-photos"));
-            startActivity(browserIntent);
+            startActivity(browserIntent); //listview with the adds that intent to browser on long click
         }
         if(position == 0 ){
 
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/the-mindful-self-express/201709/feeling-lonely-you-may-be-damaging-your-health"));
-        startActivity(browserIntent);}
+        startActivity(browserIntent);} //listview with the adds that intent to browser on long click
         return false;
         }
 }
