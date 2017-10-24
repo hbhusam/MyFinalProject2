@@ -1,14 +1,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF6666"
-    tools:context="com.example.hp1.finalproject.Relationship" >
+    android:background="@mipmap/grey"
+    android:orientation="vertical"
+    tools:context="com.example.hp1.myfinalproject.Relationship"
+    android:weightSum="1">
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:text="New's Feed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvNewsFeed"
+        android:layout_weight="0.06"
+        android:layout_gravity="top|center_horizontal"
+        android:textSize="26dp"
+        android:fontFamily="sans-serif"
+        android:textStyle="normal|bold|italic"
+        android:textAlignment="center"
+        android:textAllCaps="true" />
 
     <ListView
-        android:id="@+id/listview"
-        android:layout_width="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_height="180dp" />
+        android:id="@+id/lvNewsfeed"
+        android:layout_width="364dp"
+        android:layout_height="350dp"
+        android:padding="10dp"
+        android:layout_gravity="center"/>
 </RelativeLayout>

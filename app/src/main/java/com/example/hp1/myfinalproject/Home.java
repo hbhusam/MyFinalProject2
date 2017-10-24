@@ -3,7 +3,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -40,7 +39,7 @@ public class Home  extends AppCompatActivity implements View.OnClickListener,Ada
         builder.setContentText("this is the body of the notification message");
 
         //
-        Intent bIntent = new Intent(this, about.class);
+        Intent bIntent = new Intent(this, About.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, bIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(contentIntent);
 
@@ -72,7 +71,7 @@ return true;
     public boolean onOptionsItemSelected (MenuItem item) { //setting up the option menu to work
         switch (item.getItemId()){
             case R.id.about:
-                Intent i = new Intent(this, about.class);// when clicking on the option menu intents to the page
+                Intent i = new Intent(this, About.class);// when clicking on the option menu intents to the page
                 startActivity(i);
 
         }
@@ -90,6 +89,7 @@ return true;
             startActivity(i);
         }
     }
+
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
