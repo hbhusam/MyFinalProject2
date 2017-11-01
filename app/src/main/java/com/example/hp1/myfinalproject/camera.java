@@ -1,6 +1,7 @@
 package com.example.hp1.myfinalproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -26,6 +27,7 @@ public class Camera extends AppCompatActivity implements View.OnClickListener {
 
     static final int SELECT_IMAGE = 1;
     static final int TAKE_IMAGE = 0;
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,16 @@ public class Camera extends AppCompatActivity implements View.OnClickListener {
         photogallerybt = (Button) findViewById(R.id.photogallerybt);
         takephotobt.setOnClickListener(this);
         photogallerybt.setOnClickListener(this);
+        pref = getSharedPreferences("mypref",MODE_PRIVATE);
+
+        String em=pref.getString("image",null);
+
+        if(em != null){
+           bitmap = BitmapFactory.decodeFile(em);
+            imageView.setImageBitmap(bitmap);
+
+
+        }
 
     }
 
@@ -84,6 +96,9 @@ public class Camera extends AppCompatActivity implements View.OnClickListener {
         String filePath = root.getAbsolutePath() + "/DCIM/Camera/IMG_" + timeStamp + ".jpg";
         File file = new File(filePath);// determinig the type of the file and its place.
 
+SharedPreferences.Editor editor=pref.edit();
+        editor.putString("image", filePath);
+        editor.commit();
         try {
             // if gallary nit full create a file and save images
             file.createNewFile();// create new file to save image.

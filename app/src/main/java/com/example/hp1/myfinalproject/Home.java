@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class Home  extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemLongClickListener
 {
-    Button btrelationship, btask ;
+    Button btrelationship, btask, btcamera ;
     ListView newsfeed;
     ArrayList<String> feed = new ArrayList<>();
     ArrayAdapter<String> adapter;
@@ -29,6 +29,8 @@ public class Home  extends AppCompatActivity implements View.OnClickListener,Ada
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         btnNotify = (Button) findViewById(R.id.btnNotify);
+        btcamera = (Button) findViewById(R.id.btcamera);
+        btcamera.setOnClickListener(this);
 
         //create builder object
         builder = new NotificationCompat.Builder(this);
@@ -82,6 +84,10 @@ return true;
     public void onClick(View v) {
         if (v==btrelationship){
             Intent i = new Intent(this, Relationship.class);// clicking on button and intenting to page
+            startActivity(i);
+        }
+        if (v==btcamera){
+            Intent i = new Intent(this, Camera.class);// clicking on button and intenting to page
             startActivity(i);
         }
         if (v==btask){
