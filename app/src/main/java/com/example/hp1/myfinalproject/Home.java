@@ -1,4 +1,5 @@
 package com.example.hp1.myfinalproject;
+
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
@@ -18,12 +19,17 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class Home  extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemLongClickListener
+public class Home extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemLongClickListener
 {
-    Button btrelationship, btask, btcamera ;
+    Button btrelationship, btask, btcamera, btread ;
     ListView newsfeed;
     ArrayList<String> feed = new ArrayList<>();
     ArrayAdapter<String> adapter;
+
+    /**
+     * photo saving profile or choosing from gallery a profile picture
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,10 @@ public class Home  extends AppCompatActivity implements View.OnClickListener,Ada
         btnNotify = (Button) findViewById(R.id.btnNotify);
         btcamera = (Button) findViewById(R.id.btcamera);
         btcamera.setOnClickListener(this);
+        btread = (Button) findViewById(R.id.btread);
+        btread.setOnClickListener(this);
+
+
 
         //create builder object
         builder = new NotificationCompat.Builder(this);
@@ -59,14 +69,22 @@ public class Home  extends AppCompatActivity implements View.OnClickListener,Ada
         //btrelationship.setOnClickListener(this);
         //  btask.setOnClickListener(this);
         newsfeed =(ListView) findViewById(R.id.lvNewsfeed);
-
+/**
+ * Q&A in the ask page.
+ */
         feed.add("Can AI Detect Sexual Orientation from Photos?");  // discreption of the item in the listview
         feed.add("Feeling Lonely? You May Be Damaging Your Health"); // discreption of the item in the listview
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, feed);
         newsfeed.setAdapter(adapter);// setting the adapter to the listview
         newsfeed.setOnItemLongClickListener(this);
     }
-public boolean onCreateOptionsMenu (Menu menu) {        // coneccting the option menu from the resource file
+
+    /**
+     * in the memu a list of options
+     * @param menu on the left top corner
+     * @return activity start true or false.
+     */
+    public boolean onCreateOptionsMenu (Menu menu) {        // coneccting the option menu from the resource file
     getMenuInflater().inflate(R.menu.homemenu, menu);
 return true;
 }
@@ -80,6 +98,11 @@ return true;
         return true;
 
     }
+
+    /**
+     * each button is a picture when clicked it intents to the page as described.
+     * @param v the view of the activity
+     */
     @Override
     public void onClick(View v) {
         if (v==btrelationship){
@@ -94,9 +117,21 @@ return true;
             Intent i = new Intent(this, Ask.class);// clicking on button and intenting to page
             startActivity(i);
         }
+        if (v==btread){
+            Intent i = new Intent(this, Fileread.class);// clicking on button and intenting to page
+            startActivity(i);
+        }
+
     }
 
-
+    /**
+     * on each item clicked the page intents to the items url as described
+     * @param parent
+     * @param view
+     * @param position is where the user has touched or clicked
+     * @param id
+     * @return onItemLongClick return true or false
+     */
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         if(position == 0 ){
@@ -109,6 +144,10 @@ return true;
         startActivity(browserIntent);} //listview with the adds that intent to browser on long click
         return false;
         }
+
+    /**
+     * on clicking baCK PRESS, an alert duialog is shown whether to stay or exit
+     */
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
