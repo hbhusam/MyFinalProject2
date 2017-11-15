@@ -23,6 +23,7 @@
         <activity android:name=".Relationship" />
         <activity android:name=".About" />
         <activity android:name=".Camera">
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
