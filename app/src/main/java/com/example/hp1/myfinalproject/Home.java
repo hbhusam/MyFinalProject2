@@ -21,7 +21,8 @@ import java.util.ArrayList;
 
 public class Home extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemLongClickListener
 {
-    Button btrelationship, btask, btcamera, btread ;
+    Button btrelationship, btask, btcamera, btread, btfitness;
+    Button  btsex, btmind, btbody;
     ListView newsfeed;
     ArrayList<String> feed = new ArrayList<>();
     ArrayAdapter<String> adapter;
@@ -39,6 +40,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Adap
         btcamera.setOnClickListener(this);
         btread = (Button) findViewById(R.id.btread);
         btread.setOnClickListener(this);
+        btsex = (Button) findViewById(R.id.btsex);
+        btsex.setOnClickListener(this);
+        btbody = (Button) findViewById(R.id.btbody);
+        btbody.setOnClickListener(this);
+        btmind = (Button) findViewById(R.id.btmind);
+        btmind.setOnClickListener(this);
+        btask = (Button) findViewById(R.id.btask);
+        btask.setOnClickListener(this);
+        btfitness = (Button) findViewById(R.id.btfitness);
+        btfitness.setOnClickListener(this);
 
 
 
@@ -121,6 +132,20 @@ return true;
             Intent i = new Intent(this, Fileread.class);// clicking on button and intenting to page
             startActivity(i);
         }
+        if (v==btfitness){
+            Intent i = new Intent(this, Fileread.class);// clicking on button and intenting to page
+            startActivity(i);
+        }
+        if (v==btsex){
+            Intent i = new Intent(this, Fileread.class);// clicking on button and intenting to page
+            startActivity(i);
+        }
+        if (v==btmind){
+            Intent i = new Intent(this, Fileread.class);// clicking on button and intenting to page
+            startActivity(i);
+        }
+
+
 
     }
 
