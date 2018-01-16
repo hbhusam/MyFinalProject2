@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -38,29 +39,26 @@ public class Ask extends AppCompatActivity implements View.OnClickListener,Adapt
     @Override
     public void onClick(View v) {
         if(v==btadd){
-            emails.add(et1.getText().toString());
-            adapter.notifyDataSetChanged();
+            if(et1.getText().toString().isEmpty())
+                Toast.makeText(this,"Field is empty",Toast.LENGTH_LONG).show();
 
+            else{
+                emails.add(et1.getText().toString());
+                adapter.notifyDataSetChanged();
+            }
         }
         if(v==btclear){
             et1.setText("");
-
-
         }
     }
-
-
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         Intent email = new Intent(Intent.ACTION_SEND);
 
         email.putExtra(Intent.EXTRA_EMAIL, new String[]{emails.get(position).toString()});
-        email.putExtra(Intent.EXTRA_SUBJECT,"Hello" );
-
-        email.putExtra(Intent.EXTRA_TEXT,"Byee");
-
-
+        email.putExtra(Intent.EXTRA_SUBJECT,"Question from SelfHelp" );
+        email.putExtra(Intent.EXTRA_TEXT,emails.get(position).toString());
         email.setType("message/rfc822");
 
         startActivity(Intent.createChooser(email, "Choose an Email client :"));
