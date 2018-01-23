@@ -133,15 +133,15 @@ return true;
             startActivity(i);
         }
         if (v==btfitness){
-            Intent i = new Intent(this, Fileread.class);// clicking on button and intenting to page
+            Intent i = new Intent(this, Fitness.class);// clicking on button and intenting to page
             startActivity(i);
         }
         if (v==btsex){
-            Intent i = new Intent(this, Fileread.class);// clicking on button and intenting to page
+            Intent i = new Intent(this, Sexuality.class);// clicking on button and intenting to page
             startActivity(i);
         }
         if (v==btmind){
-            Intent i = new Intent(this, Fileread.class);// clicking on button and intenting to page
+            Intent i = new Intent(this, Mind.class);// clicking on button and intenting to page
             startActivity(i);
         }
 
@@ -159,16 +159,24 @@ return true;
      */
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        if(position == 0 ){
+        if (position == 0) {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/your-online-secrets/201709/can-ai-detect-sexual-orientation-photos"));
             startActivity(browserIntent); //listview with the adds that intent to browser on long click
         }
-        if(position == 0 ){
+        if (position == 0) {
 
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/the-mindful-self-express/201709/feeling-lonely-you-may-be-damaging-your-health"));
-        startActivity(browserIntent);} //listview with the adds that intent to browser on long click
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/the-mindful-self-express/201709/feeling-lonely-you-may-be-damaging-your-health"));
+            startActivity(browserIntent);
+        } //listview with the adds that intent to browser on long click
+
+
+        if (position == 0) {
+
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.simplypsychology.org/whatispsychology.html"));
+            startActivity(browserIntent);
+        } //listview with the adds that intent to browser on long click
         return false;
-        }
+    }
 
     /**
      * on clicking baCK PRESS, an alert duialog is shown whether to stay or exit
