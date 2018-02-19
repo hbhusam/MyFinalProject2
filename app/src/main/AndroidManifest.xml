@@ -20,18 +20,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Mind" />
         <activity android:name=".Ask" />
         <activity android:name=".Relationship" />
         <activity android:name=".About" />
-        <activity android:name=".Camera">
+        <activity android:name=".Camera"/>
+            <activity android:name=".Sexuality"/>
+                <activity android:name=".Fitness"/>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
-        </activity>
+
         <activity android:name=".Fileread" />
-        <activity android:name=".Fitness" />
-        <activity android:name=".Sexuality"></activity>
+
+
         <activity android:name=".Repeating_activity" />
 
         <receiver android:name=".Notification_reciever"/>

@@ -88,7 +88,7 @@ public class Camera extends AppCompatActivity implements View.OnClickListener {
             editor.putString("notification", snotify.getText().toString());
             editor.commit();
         }
-        if (snotify.isChecked()) {
+    //    if (snotify.isChecked()) {
             Calendar calender = Calendar.getInstance();
 
             calender.set(Calendar.HOUR_OF_DAY, 17);
@@ -102,7 +102,7 @@ public class Camera extends AppCompatActivity implements View.OnClickListener {
             alarmmaneger.setRepeating(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 
 
-        }
+  //      }
         }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
