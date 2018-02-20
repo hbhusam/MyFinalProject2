@@ -21,8 +21,13 @@ public class Relationship extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_relationship);
         newsfeed =(ListView) findViewById(R.id.lvNewsfeed);
 
-        feed.add("Can AI Detect Sexual Orientation from Photos?");  // discreption of the item in the listview
-        feed.add("Feeling Lonely? You May Be Damaging Your Health"); // discreption of the item in the listview
+        feed.add("11 Reasons Women Have Difficulty with Orgasm, and What Helps");  // discreption of the item in the listview
+        feed.add("Do Happier Relationships Make for Better Health?"); // discreption of the item in the listview
+        feed.add("Cycles of Intimacy");
+        feed.add("5 Relationship Red Flags You Should Never Ignore");
+        feed.add("Relationship Misconceptions");
+        feed.add("Improve Your Relationship In Twenty Minutes!");
+        feed.add("What Is the Smartest Move to Make on Valentines Day?");
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, feed);
         newsfeed.setAdapter(adapter);// setting the adapter to the listview
         newsfeed.setOnItemLongClickListener((AdapterView.OnItemLongClickListener) this);
@@ -36,21 +41,42 @@ public class Relationship extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         if (position == 0) {
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/your-online-secrets/201709/can-ai-detect-sexual-orientation-photos"));
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/experimentations/201802/11-reasons-women-have-difficulty-orgasm-and-what-helps"));
             startActivity(browserIntent); //listview with the adds that intent to browser on long click
         }
-        if (position == 0) {
+        if (position == 1) {
 
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/the-mindful-self-express/201709/feeling-lonely-you-may-be-damaging-your-health"));
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/the-social-brain/201802/do-happier-relationships-make-better-health"));
             startActivity(browserIntent);
         } //listview with the adds that intent to browser on long click
 
 
-        if (position == 0) {
+        if (position == 2) {
 
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.simplypsychology.org/whatispsychology.html"));
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/complicated-love/201802/cycles-intimacy"));
             startActivity(browserIntent);
         } //listview with the adds that intent to browser on long click
+        if (position == 3) {
+
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/tech-support/201802/5-relationship-red-flags-you-should-never-ignore"));
+            startActivity(browserIntent);
+        } //listview with the adds that intent to browser on long click
+        if (position == 4) {
+
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/finding-love-the-scientific-take/201802/relationship-misconceptions"));
+            startActivity(browserIntent);
+        } //listview with the adds that intent to browser on long click
+        if (position == 5) {
+
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/quite-queerly/201802/improve-your-relationship-in-twenty-minutes"));
+            startActivity(browserIntent);
+        } //listview with the adds that intent to browser on long click
+        if (position == 6) {
+
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/slightly-blighty/201802/what-is-the-smartest-move-make-valentines-day"));
+            startActivity(browserIntent);
+        } //listview with the adds that intent to browser on long click
+
         return false;
     }
 }
