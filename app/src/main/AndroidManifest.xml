@@ -5,7 +5,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
-
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -23,21 +24,24 @@
         <activity android:name=".Ask" />
         <activity android:name=".Relationship" />
         <activity android:name=".About" />
-        <activity android:name=".Camera"/>
-            <activity android:name=".Sexuality"/>
-                <activity android:name=".Fitness"/>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-            </intent-filter>
+        <activity android:name=".Camera" />
+        <activity android:name=".Sexuality" />
+        <activity android:name=".Fitness" />
+
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+        </intent-filter>
 
         <activity android:name=".Fileread" />
-
-
         <activity android:name=".Repeating_activity" />
 
-        <receiver android:name=".Notification_reciever"/>
+        <receiver android:name=".Notification_reciever">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
-
+        <activity android:name=".Profilesave"></activity>
     </application>
 
 </manifest>

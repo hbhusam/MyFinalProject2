@@ -2,17 +2,20 @@ package com.example.hp1.myfinalproject;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -25,14 +28,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Camera extends AppCompatActivity implements View.OnClickListener {
+public class Camera extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
     private Bitmap bitmap;
     private ImageView imageView;
     Button takephotobt, photogallerybt, btsave;
     EditText etname, etmail;
     Switch snotify;
-
-
 
     static final int SELECT_IMAGE = 1;
     static final int TAKE_IMAGE = 0;
@@ -63,9 +64,8 @@ public class Camera extends AppCompatActivity implements View.OnClickListener {
         if(em != null){
             bitmap = BitmapFactory.decodeFile(em);
             imageView.setImageBitmap(bitmap);
-
-
         }
+
 
     }
 
@@ -75,12 +75,12 @@ public class Camera extends AppCompatActivity implements View.OnClickListener {
         if (v == takephotobt) {
             Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(i, TAKE_IMAGE);
-        } else {
+        } else if(v == photogallerybt) {
             Intent i = new Intent(Intent.ACTION_PICK,
                     android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(i, SELECT_IMAGE);
         }
-        if (v == btsave) {
+        else if (v == btsave) {
             SharedPreferences.Editor editor = pref.edit();
             editor.putString("name", etname.getText().toString());
 
@@ -88,27 +88,14 @@ public class Camera extends AppCompatActivity implements View.OnClickListener {
             editor.putString("notification", snotify.getText().toString());
             editor.commit();
         }
-    //    if (snotify.isChecked()) {
-            Calendar calender = Calendar.getInstance();
 
-            calender.set(Calendar.HOUR_OF_DAY, 17);
-            calender.set(Calendar.MINUTE, 29);
-            calender.set(Calendar.SECOND, 12);
-
-
-            Intent intent = new Intent(getApplicationContext(), Notification_reciever.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-            AlarmManager alarmmaneger = (AlarmManager) getSystemService(ALARM_SERVICE);
-            alarmmaneger.setRepeating(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-
-
-  //      }
-        }
+    }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == TAKE_IMAGE && resultCode == RESULT_OK) {
             Bundle extra = data.getExtras();
             bitmap = (Bitmap) extra.get("data");
+            saveImage(bitmap);
             imageView.setImageURI(Uri.fromFile(saveImage(bitmap)));
         } else {
             if (requestCode == SELECT_IMAGE && resultCode == RESULT_OK) ;
@@ -153,6 +140,23 @@ public class Camera extends AppCompatActivity implements View.OnClickListener {
             Toast.makeText(this, "Faild to save image", Toast.LENGTH_SHORT).show();
         }
         return file;
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+            Calendar calender = Calendar.getInstance();
+
+            calender.set(Calendar.HOUR_OF_DAY, 17);
+            calender.set(Calendar.MINUTE, 29);
+            calender.set(Calendar.SECOND, 12);
+
+
+            Intent intent = new Intent(getApplicationContext(), Notification_reciever.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager alarmmaneger = (AlarmManager) getSystemService(ALARM_SERVICE);
+            alarmmaneger.setRepeating(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        }
     }
 }
 
