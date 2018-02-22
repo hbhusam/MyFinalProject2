@@ -25,13 +25,14 @@
         android:fontFamily="sans-serif"
         android:textStyle="normal|bold|italic"
         android:textAlignment="center"
-        android:textAllCaps="true" />
+        android:textAllCaps="true"
+        android:paddingBottom="50dp" />
 
     <ListView
         android:id="@+id/lvNewsfeed"
         android:layout_width="364dp"
         android:layout_height="350dp"
-        android:padding="10dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:paddingTop="50dp" />
 </RelativeLayout>
 
