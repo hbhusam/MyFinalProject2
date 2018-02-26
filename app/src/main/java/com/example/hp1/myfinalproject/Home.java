@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class Home extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemLongClickListener
 {
     Button btrelationship, btask, btcamera, btread, btfitness;
-    Button  btsex, btmind, btbody;
+    Button  btsex;
     ListView newsfeed;
     ArrayList<String> feed = new ArrayList<>();
     ArrayAdapter<String> adapter;
@@ -41,8 +41,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Adap
         btread.setOnClickListener(this);
         btsex = (Button) findViewById(R.id.btsex);
         btsex.setOnClickListener(this);
-        btbody = (Button) findViewById(R.id.btbody);
-        btbody.setOnClickListener(this);
+
         btask = (Button) findViewById(R.id.btask);
         btask.setOnClickListener(this);
         btfitness = (Button) findViewById(R.id.btfitness);
@@ -81,6 +80,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Adap
         feed.add("How To Take Action When You Don’t Wanna");
         feed.add("Talking With Teens About STIs");
         feed.add("11 Reasons Women Have Difficulty with Orgasm, and What Helps");
+        feed.add("The Wisdom of Defense Mechanisms");
+        feed.add("");
+        feed.add("");
 
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, feed);
         newsfeed.setAdapter(adapter);// setting the adapter to the listview
@@ -101,6 +103,10 @@ return true;
             case R.id.about:
                 Intent i = new Intent(this, About.class);// when clicking on the option menu intents to the page
                 startActivity(i);
+
+            case R.id.profile:
+                Intent l = new Intent(this, Profile.class);// when clicking on the option menu intents to the page
+                startActivity(l);
 
         }
         return true;
@@ -189,7 +195,10 @@ return true;
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/experimentations/201802/11-reasons-women-have-difficulty-orgasm-and-what-helps"));
             startActivity(browserIntent);
         } //listview with the adds that intent to browser on long click
+        if (position == 7) {
 
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.psychologytoday.com/blog/insight-therapy/201802/the-wisdom-defense-mechanisms"));
+        } //listview with the adds that intent to browser on long click
 
 
 
