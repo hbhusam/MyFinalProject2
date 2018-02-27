@@ -10,6 +10,10 @@ import android.support.v4.app.NotificationCompat;
 /**
  * Created by Hp1 on 23/01/2018.
  */
+
+/**
+ * for the notification to sent its required to have a title and text
+ */
 public class Notification_reciever extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {

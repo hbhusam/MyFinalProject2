@@ -10,11 +10,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-
+/**
+ * difining the listview and array adapter
+ */
 public class Relationship extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemLongClickListener {
     ListView newsfeed;
     ArrayList<String> feed = new ArrayList<>();
     ArrayAdapter<String> adapter;
+    /**
+     * here i added articles for the app
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +43,14 @@ public class Relationship extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
     }
-
+    /**
+     * determined to the article the postition to intent to browser by URL
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     * @return
+     */
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         if (position == 0) {

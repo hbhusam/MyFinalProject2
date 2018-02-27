@@ -23,6 +23,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+/**
+ * this activity reads files and/or rewrites them for the developer
+ */
 public class Fileread extends AppCompatActivity implements View.OnClickListener {
     InputStream is = null;
     InputStreamReader in;
@@ -47,6 +50,10 @@ public class Fileread extends AppCompatActivity implements View.OnClickListener 
     EditText et1;
     private ActionBar.Tab txtData;
 
+    /**
+     * defining the widgets
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

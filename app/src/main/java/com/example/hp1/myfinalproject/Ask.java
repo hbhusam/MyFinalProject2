@@ -23,35 +23,52 @@ public class Ask extends AppCompatActivity implements View.OnClickListener,Adapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask);
+
+        /**
+         * setting up the buttons and defining the listviews and adapters
+         */
         btadd=(Button)findViewById(R.id.bt1);
         btclear=(Button)findViewById(R.id.bt2);
         mails=(ListView)findViewById(R.id.emails);
         et1=(EditText)findViewById(R.id.EMail);
         btadd.setOnClickListener(this);
         btclear.setOnClickListener(this);
-        emails.add("How To Get A girlFriend?");
-        emails.add("Is My Mind Big?");
+        emails.add("How To Get A girlFriend?");// a question just for the space not to be empty
+        emails.add("Is My Mind Big?");// a question just for the space not to be empty
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, emails);
         mails.setAdapter(adapter);
         mails.setOnItemLongClickListener(this);
     }
 
+    /**
+     * adss questions
+     * @param v
+     */
     @Override
     public void onClick(View v) {
+
         if(v==btadd){
-            if(et1.getText().toString().isEmpty())
-                Toast.makeText(this,"Field is empty",Toast.LENGTH_LONG).show();
+            if(et1.getText().toString().isEmpty())// adding a question
+                Toast.makeText(this,"Field is empty",Toast.LENGTH_LONG).show();// if the text is empty show toast
 
             else{
                 emails.add(et1.getText().toString());
-                adapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();// notifies the data
             }
         }
         if(v==btclear){
-            et1.setText("");
+            et1.setText("");// erases whats written
         }
     }
 
+    /**
+     * here this sends the email that was chosen to be sent to regarding the question
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     * @return
+     */
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         Intent email = new Intent(Intent.ACTION_SEND);
@@ -61,7 +78,7 @@ public class Ask extends AppCompatActivity implements View.OnClickListener,Adapt
         email.putExtra(Intent.EXTRA_TEXT,emails.get(position).toString());
         email.setType("message/rfc822");
 
-        startActivity(Intent.createChooser(email, "Choose an Email client :"));
+        startActivity(Intent.createChooser(email, "Choose an Email client :"));//choosing an email to send to
         return false;
     }
 
