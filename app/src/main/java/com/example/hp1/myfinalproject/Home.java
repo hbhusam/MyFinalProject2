@@ -41,12 +41,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Adap
         btread.setOnClickListener(this);
         btsex = (Button) findViewById(R.id.btsex);
         btsex.setOnClickListener(this);
-
         btask = (Button) findViewById(R.id.btask);
         btask.setOnClickListener(this);
         btfitness = (Button) findViewById(R.id.btfitness);
         btfitness.setOnClickListener(this);
-
+        btrelationship = (Button)findViewById(R.id.btrelationship) ;
+        btrelationship.setOnClickListener(this);
 
 
         //create builder object
@@ -119,12 +119,13 @@ return true;
      */
     @Override
     public void onClick(View v) {
-        if (v==btrelationship){
-            Intent i = new Intent(this, Relationship.class);// clicking on button and intenting to page
-            startActivity(i);
-        }
+
         if (v==btcamera){
             Intent i = new Intent(this, Camera.class);// clicking on button and intenting to page
+            startActivity(i);
+        }
+        if (v==btrelationship){
+            Intent i = new Intent(this, Relationship.class);// clicking on button and intenting to page
             startActivity(i);
         }
         if (v==btask){

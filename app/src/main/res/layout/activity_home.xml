@@ -53,7 +53,7 @@
                 android:background="@mipmap/couple"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
-                android:id="@+id/btbody"
+                android:id="@+id/btrelationship"
                 android:layout_weight="1" />
             <Button
                 android:background="@mipmap/icon"

@@ -28,17 +28,24 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * this activity sets up the profile of the user
+ */
 public class Camera extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
     private Bitmap bitmap;
     private ImageView imageView;
     Button takephotobt, photogallerybt, btsave;
     EditText etname, etmail;
     Switch snotify;
-
+    /**
+     * difining selct and take image for easier use
+     */
     static final int SELECT_IMAGE = 1;
     static final int TAKE_IMAGE = 0;
     SharedPreferences pref;
-
+    /**
+     * setting up all and the widgets or defining them
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +59,7 @@ public class Camera extends AppCompatActivity implements View.OnClickListener, C
         photogallerybt = (Button) findViewById(R.id.photogallerybt);
         takephotobt.setOnClickListener(this);
         photogallerybt.setOnClickListener(this);
-        pref = getSharedPreferences("mypref",MODE_PRIVATE);
+        pref = getSharedPreferences("mypref",MODE_PRIVATE);// thats where the files are being saved
         etname = (EditText) findViewById(R.id.etname);
         etmail = (EditText) findViewById(R.id.etmail);
         snotify = (Switch) findViewById(R.id.snotify);
@@ -62,25 +69,29 @@ public class Camera extends AppCompatActivity implements View.OnClickListener, C
         String em=pref.getString("image",null);
 
         if(em != null){
-            bitmap = BitmapFactory.decodeFile(em);
+            bitmap = BitmapFactory.decodeFile(em);//thats where the code file is saved of the image
             imageView.setImageBitmap(bitmap);
         }
 
 
     }
 
+    /**
+     * taking images and selecting them for setting up the profile
+     * @param v
+     */
 
     @Override
     public void onClick(View v) {
         if (v == takephotobt) {
             Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(i, TAKE_IMAGE);
+            startActivityForResult(i, TAKE_IMAGE);// takes new image
         } else if(v == photogallerybt) {
             Intent i = new Intent(Intent.ACTION_PICK,
                     android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(i, SELECT_IMAGE);
+            startActivityForResult(i, SELECT_IMAGE);// selects image from library
         }
-        else if (v == btsave) {
+        else if (v == btsave) {// saves the information
             SharedPreferences.Editor editor = pref.edit();
             editor.putString("name", etname.getText().toString());
 
@@ -91,6 +102,12 @@ public class Camera extends AppCompatActivity implements View.OnClickListener, C
 
     }
 
+    /**
+     * to check if the request was processed correctly and if the request code was recieved
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == TAKE_IMAGE && resultCode == RESULT_OK) {
             Bundle extra = data.getExtras();
@@ -115,6 +132,11 @@ public class Camera extends AppCompatActivity implements View.OnClickListener, C
         }
     }
 
+    /**
+     * this sends the photo which was taken and saves it in the phone so it will be shown in gallery
+     * @param bitmap
+     * @return
+     */
     public File saveImage(Bitmap bitmap) {
         File root = Environment.getExternalStorageDirectory();// internal storage launching .
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -142,11 +164,18 @@ public class Camera extends AppCompatActivity implements View.OnClickListener, C
         return file;
     }
 
+    /**
+     * turning on notification switch for the user to remember to check for new info on a certain time of the day
+     * @param buttonView
+     * @param isChecked
+     */
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if (isChecked) {
             Calendar calender = Calendar.getInstance();
-
+/**
+ *the time for the notification to be sent
+ */
             calender.set(Calendar.HOUR_OF_DAY, 17);
             calender.set(Calendar.MINUTE, 29);
             calender.set(Calendar.SECOND, 12);
