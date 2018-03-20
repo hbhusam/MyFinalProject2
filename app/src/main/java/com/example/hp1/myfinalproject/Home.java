@@ -1,6 +1,5 @@
 package com.example.hp1.myfinalproject;
 
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -121,7 +120,7 @@ return true;
     public void onClick(View v) {
 
         if (v==btcamera){
-            Intent i = new Intent(this, Camera.class);// clicking on button and intenting to page
+            Intent i = new Intent(this, ProfileSet.class);// clicking on button and intenting to page
             startActivity(i);
         }
         if (v==btrelationship){

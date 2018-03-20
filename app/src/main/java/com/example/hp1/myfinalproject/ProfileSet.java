@@ -31,7 +31,7 @@ import java.util.Date;
 /**
  * this activity sets up the profile of the user
  */
-public class Camera extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+public class ProfileSet extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
     private Bitmap bitmap;
     private ImageView imageView;
     Button takephotobt, photogallerybt, btsave;
@@ -142,7 +142,7 @@ public class Camera extends AppCompatActivity implements View.OnClickListener, C
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 
 
-        String filePath = root.getAbsolutePath() + "/DCIM/Camera/IMG_" + timeStamp + ".jpg";
+        String filePath = root.getAbsolutePath() + "/DCIM/ProfileSet/IMG_" + timeStamp + ".jpg";
         File file = new File(filePath);// determinig the type of the file and its place.
 
         SharedPreferences.Editor editor=pref.edit();

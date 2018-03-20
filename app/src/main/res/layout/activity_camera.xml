@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/bluefade"
-    tools:context="com.example.hp1.myfinalproject.Camera">
+    tools:context="com.example.hp1.myfinalproject.ProfileSet">
 
 
     <ImageView
